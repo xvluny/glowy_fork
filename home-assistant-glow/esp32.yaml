@@ -8,11 +8,11 @@
 substitutions:
   device_name: home-assistant-glow
   friendly_name: Home Assistant Glow
-  project_version: "4.2.3"
-  device_description: "Measure your energy consumption with the pulse LED on your smart meter - ESP32 Generic"
+  project_version: "4.2.3f"
+  device_description: "Measure your energy consumption with the pulse LED on your smart meter - ESP32 C3"
 
   # Define the GPIO pins
-  pulse_pin: GPIO26
+  pulse_pin: GPIO1
   status_led: GPIO5
   led_pin_red: GPIO2
   led_pin_green: GPIO4
@@ -27,12 +27,12 @@ esphome:
     version: "${project_version}"
 
 dashboard_import:
-  package_import_url: github://klaasnicolaas/home-assistant-glow/home-assistant-glow/esp32.yaml@main
+  package_import_url: github://xvluny/glowy_fork/home-assistant-glow/esp32.yaml@main
 
 esp32:
-  board: esp32dev
+  board: esp32-c3-devkitm-1
   framework:
-    type: arduino
+    type: esp-idf
 
 packages:
   remote_package:
@@ -51,9 +51,13 @@ logger:
 improv_serial:
 
 wifi:
-  # Set up a wifi access point
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: '${friendly_name}'
+    ssid: "Test Fallback Hotspot"
+    password: "oYdjyOUdR29m"
 
 # In combination with the `ap` this allows the user
 # to provision wifi credentials to the device via WiFi AP.
