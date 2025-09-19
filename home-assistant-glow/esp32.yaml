@@ -6,7 +6,7 @@
 # © Klaas Schoute
 #
 substitutions:
-  device_name: home-assistant-glow
+  device_name: glowy
   friendly_name: Home Assistant Glow
   project_version: "4.2.3f"
   device_description: "Measure your energy consumption with the pulse LED on your smart meter - ESP32 C3"
@@ -36,7 +36,7 @@ esp32:
 
 packages:
   remote_package:
-    url: https://github.com/klaasnicolaas/home-assistant-glow/
+    url: https://github.com/xvluny/home-assistant-glow/
     ref: "4.2.3"
     files:
       - components/basis.yaml
