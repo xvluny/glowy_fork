@@ -54,6 +54,8 @@ sensor:
     icon: mdi:flash-outline
     accuracy_decimals: 0
     pin: ${pulse_pin}
+    #next line added for pull up
+      mode: INPUT_PULLUP
     on_raw_value:
       then:
         - light.turn_on:
